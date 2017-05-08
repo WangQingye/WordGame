@@ -1,0 +1,140 @@
+{
+	"groups": [
+		{
+			"keys": "BackBtn_png,BackBtn1_png,btn_disable_png,btn_music_down_png,btn_music_png,btn_sound_down_png,btn_sound_png,Dialog_png,GameBG1_jpg,GameBG2_jpg,GameBG3_jpg,gs_select_1_png,gs_select_dis_png,MoneyBG_png,MoneyPic_png,PageDownBtn_png,PageUpBtn_png,Result_png,ResultBtn_png,ResultBtn1_png,StartBtn_png,StartBtn1_png,WordFrame_png,YesBtn_jpg,YesBtn1_jpg,questions_json",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"url": "assets/res/BackBtn.png",
+			"type": "image",
+			"name": "BackBtn_png"
+		},
+		{
+			"url": "assets/res/BackBtn1.png",
+			"type": "image",
+			"name": "BackBtn1_png"
+		},
+		{
+			"url": "assets/res/btn_disable.png",
+			"type": "image",
+			"name": "btn_disable_png"
+		},
+		{
+			"url": "assets/res/btn_music_down.png",
+			"type": "image",
+			"name": "btn_music_down_png"
+		},
+		{
+			"url": "assets/res/btn_music.png",
+			"type": "image",
+			"name": "btn_music_png"
+		},
+		{
+			"url": "assets/res/btn_sound_down.png",
+			"type": "image",
+			"name": "btn_sound_down_png"
+		},
+		{
+			"url": "assets/res/btn_sound.png",
+			"type": "image",
+			"name": "btn_sound_png"
+		},
+		{
+			"url": "assets/res/Dialog.png",
+			"type": "image",
+			"name": "Dialog_png"
+		},
+		{
+			"url": "assets/res/GameBG1.jpg",
+			"type": "image",
+			"name": "GameBG1_jpg"
+		},
+		{
+			"url": "assets/res/GameBG2.jpg",
+			"type": "image",
+			"name": "GameBG2_jpg"
+		},
+		{
+			"url": "assets/res/GameBG3.jpg",
+			"type": "image",
+			"name": "GameBG3_jpg"
+		},
+		{
+			"url": "assets/res/gs_select_1.png",
+			"type": "image",
+			"name": "gs_select_1_png"
+		},
+		{
+			"url": "assets/res/gs_select_dis.png",
+			"type": "image",
+			"name": "gs_select_dis_png"
+		},
+		{
+			"url": "assets/res/MoneyBG.png",
+			"type": "image",
+			"name": "MoneyBG_png"
+		},
+		{
+			"url": "assets/res/MoneyPic.png",
+			"type": "image",
+			"name": "MoneyPic_png"
+		},
+		{
+			"url": "assets/res/PageDownBtn.png",
+			"type": "image",
+			"name": "PageDownBtn_png"
+		},
+		{
+			"url": "assets/res/PageUpBtn.png",
+			"type": "image",
+			"name": "PageUpBtn_png"
+		},
+		{
+			"url": "assets/res/Result.png",
+			"type": "image",
+			"name": "Result_png"
+		},
+		{
+			"url": "assets/res/ResultBtn.png",
+			"type": "image",
+			"name": "ResultBtn_png"
+		},
+		{
+			"url": "assets/res/ResultBtn1.png",
+			"type": "image",
+			"name": "ResultBtn1_png"
+		},
+		{
+			"url": "assets/res/StartBtn.png",
+			"type": "image",
+			"name": "StartBtn_png"
+		},
+		{
+			"url": "assets/res/StartBtn1.png",
+			"type": "image",
+			"name": "StartBtn1_png"
+		},
+		{
+			"url": "assets/res/WordFrame.png",
+			"type": "image",
+			"name": "WordFrame_png"
+		},
+		{
+			"url": "assets/res/YesBtn.jpg",
+			"type": "image",
+			"name": "YesBtn_jpg"
+		},
+		{
+			"url": "assets/res/YesBtn1.jpg",
+			"type": "image",
+			"name": "YesBtn1_jpg"
+		},
+		{
+			"url": "assets/questions.json",
+			"type": "json",
+			"name": "questions_json"
+		}
+	]
+}

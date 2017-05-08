@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="GameSenceSkin" width="720" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*">
+	<e:Image source="GameBG3_jpg" verticalCenter="0" horizontalCenter="0" touchEnabled="false" locked="true"/>
+	<e:Button id="btn_back" label="" x="13.27" y="7.61">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="BackBtn_png" source.down="BackBtn1_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Image source="WordFrame_png" horizontalCenter="0" y="128" touchEnabled="false" locked="true"/>
+	<e:Group id="gp_answer" width="361.33" height="83" x="177.99" y="477.11" anchorOffsetX="0" anchorOffsetY="0">
+		<ns1:Word width="80" height="80" x="-50" y="362" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<ns1:Word width="80" height="80" x="-40" y="372" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<ns1:Word width="80" height="80" x="-30" y="382" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<ns1:Word width="80" height="80" x="-20" y="392" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<e:layout>
+			<e:TileLayout horizontalGap="14" verticalGap="16" requestedRowCount="1"/>
+		</e:layout>
+	</e:Group>
+	<e:Group id="gp_chose" width="519.7" height="374.24" x="114.99" y="621" anchorOffsetX="0" anchorOffsetY="0">
+		<ns1:Word width="80" height="80" x="-349" y="-479" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<ns1:Word width="80" height="80" x="-339" y="-469" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<ns1:Word width="80" height="80" x="-329" y="-459" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<ns1:Word width="80" height="80" x="-319" y="-449" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<ns1:Word width="80" height="80" x="-309" y="-439" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<ns1:Word width="80" height="80" x="-339" y="-469" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<ns1:Word width="80" height="80" x="-329" y="-459" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<ns1:Word width="80" height="80" x="-319" y="-449" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<ns1:Word width="80" height="80" x="-309" y="-439" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<ns1:Word width="80" height="80" x="-299" y="-429" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<ns1:Word width="80" height="80" x="-329" y="-459" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<ns1:Word width="80" height="80" x="-319" y="-449" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<ns1:Word width="80" height="80" x="-309" y="-439" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<ns1:Word width="80" height="80" x="-299" y="-429" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<ns1:Word width="80" height="80" x="-289" y="-419" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<ns1:Word width="80" height="80" x="-319" y="-449" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<ns1:Word width="80" height="80" x="-309" y="-439" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<ns1:Word width="80" height="80" x="-299" y="-429" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<ns1:Word width="80" height="80" x="-289" y="-419" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<ns1:Word width="80" height="80" x="-279" y="-409" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<e:layout>
+			<e:TileLayout horizontalGap="30" requestedRowCount="4" requestedColumnCount="5" verticalGap="18"/>
+		</e:layout>
+	</e:Group>
+</e:Skin>
