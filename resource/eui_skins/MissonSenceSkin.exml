@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="MissonSenceSkin" width="720" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Image source="GameBG2_jpg" horizontalCenter="0" verticalCenter="0"/>
-	<e:Scroller width="100%" height="100%" horizontalCenter="0" verticalCenter="0" touchChildren="true">
+	<e:Image source="GameBG2_jpg" horizontalCenter="0" verticalCenter="0" touchEnabled="false"/>
+	<e:Scroller width="100%" height="100%" horizontalCenter="0" verticalCenter="0" touchChildren="true" touchEnabled="false">
 		<e:Group id="gp_levels" touchChildren="true" touchThrough="true" touchEnabled="false">
 		</e:Group>
 	</e:Scroller>

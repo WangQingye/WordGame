@@ -6,6 +6,8 @@ class GameSence extends eui.Component
     {
         super();
         this.skinName = 'resource/eui_skins/GameSenceSkin.exml'
+        this.gp_words.addEventListener(egret.TouchEvent.TOUCH_TAP,this.touchWord,this);
+        this.gp_answer.addEventListener(egret.TouchEvent.TOUCH_TAP,this.touchWord,this);
     }
 
     private static instance: GameSence;
@@ -15,9 +17,6 @@ class GameSence extends eui.Component
         }
         return this.instance;
     }
-
-    private 
-
     /**选择区域*/
     private gp_words:eui.Group;
     /**答案区域*/
@@ -27,6 +26,7 @@ class GameSence extends eui.Component
     /**关卡序号*/
     private levelIndex:number;
 
+    /**初始化关卡*/
     public initLevel(level:number)
     {
         this.levelIndex = level;
@@ -55,7 +55,8 @@ class GameSence extends eui.Component
             arr.splice(i,1);
         }
         this.setWords(wordList);
-        this.img_question.source = 'resource/assets/' + levelData.imgSource;
+        console.log(levelData);
+        this.img_question.source = 'resource/assets/' + levelData.img;
     }
 
     /**给每个方块赋值*/
@@ -75,5 +76,56 @@ class GameSence extends eui.Component
             answerWord.text = '';
             answerWord.visible = true;
         }
+    }
+
+    /**点击字块*/
+    private touchWord(e:egret.TouchEvent):void
+    {
+        //点击的是答案区域
+        if(e.target instanceof AnswerWord)
+        {
+            if(e.target.selectWord != null)
+            {
+                e.target.selectWord.visible = true;
+                e.target.selectWord = null;
+                e.target.text = '';
+            }
+            return;
+        }
+        //点击选择区域
+        if(e.target instanceof Word)
+        {
+            console.log(1)
+            let answerWord:AnswerWord = null;
+            for(let i = 0; i < this.gp_answer.numChildren; i++)
+            {
+                console.log(2)
+                let answer = <AnswerWord>this.gp_answer.getChildAt(i);
+                if(answer.selectWord == null) //还没有填充
+                {
+                    console.log(i)
+                    answerWord = answer;
+                    break;
+                }
+            }
+            //每次填充都判断是否胜利（因为有可能已经填了后面的，改了前面的）
+            if(answerWord != null)
+            {
+                console.log(3)
+                answerWord.setSelectWord(e.target);
+                //答案字符
+                let str = '';
+                for(let i = 0; i < this.gp_answer.numChildren; i++)
+                {
+                    let answer = <AnswerWord>this.gp_answer.getChildAt(i);
+                    str += answer.text;
+                }
+                if (str == LevelDataManager.getInstance().getLevelDate(this.levelIndex).answer)
+                {
+                    console.log('done');
+                }
+            }
+        }
+
     }
 }

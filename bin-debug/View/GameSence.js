@@ -12,6 +12,8 @@ var GameSence = (function (_super) {
     function GameSence() {
         var _this = _super.call(this) || this;
         _this.skinName = 'resource/eui_skins/GameSenceSkin.exml';
+        _this.gp_words.addEventListener(egret.TouchEvent.TOUCH_TAP, _this.touchWord, _this);
+        _this.gp_answer.addEventListener(egret.TouchEvent.TOUCH_TAP, _this.touchWord, _this);
         return _this;
     }
     GameSence.getInstance = function () {
@@ -20,6 +22,7 @@ var GameSence = (function (_super) {
         }
         return this.instance;
     };
+    /**初始化关卡*/
     GameSence.prototype.initLevel = function (level) {
         this.levelIndex = level;
         var levelData = LevelDataManager.getInstance().getLevelDate(level);
@@ -41,7 +44,8 @@ var GameSence = (function (_super) {
             arr.splice(i, 1);
         }
         this.setWords(wordList);
-        this.img_question.source = 'resource/assets/' + levelData.imgSource;
+        console.log(levelData);
+        this.img_question.source = 'resource/assets/' + levelData.img;
     };
     /**给每个方块赋值*/
     GameSence.prototype.setWords = function (arr) {
@@ -56,6 +60,46 @@ var GameSence = (function (_super) {
             answerWord.selectWord = null;
             answerWord.text = '';
             answerWord.visible = true;
+        }
+    };
+    /**点击字块*/
+    GameSence.prototype.touchWord = function (e) {
+        //点击的是答案区域
+        if (e.target instanceof AnswerWord) {
+            if (e.target.selectWord != null) {
+                e.target.selectWord.visible = true;
+                e.target.selectWord = null;
+                e.target.text = '';
+            }
+            return;
+        }
+        //点击选择区域
+        if (e.target instanceof Word) {
+            console.log(1);
+            var answerWord = null;
+            for (var i = 0; i < this.gp_answer.numChildren; i++) {
+                console.log(2);
+                var answer = this.gp_answer.getChildAt(i);
+                if (answer.selectWord == null) {
+                    console.log(i);
+                    answerWord = answer;
+                    break;
+                }
+            }
+            //每次填充都判断是否胜利（因为有可能已经填了后面的，改了前面的）
+            if (answerWord != null) {
+                console.log(3);
+                answerWord.setSelectWord(e.target);
+                //答案字符
+                var str = '';
+                for (var i = 0; i < this.gp_answer.numChildren; i++) {
+                    var answer = this.gp_answer.getChildAt(i);
+                    str += answer.text;
+                }
+                if (str == LevelDataManager.getInstance().getLevelDate(this.levelIndex).answer) {
+                    console.log('done');
+                }
+            }
         }
     };
     return GameSence;

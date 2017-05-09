@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="WordSkin" width="80" height="80" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-<e:Rect width="80" height="80" x="0" y="0" ellipseWidth="20" fillColor="0xffffff" strokeColor="0x0276d0" strokeWeight="4" ellipseHeight="20" locked="true"/>
+<e:Rect width="80" height="80" x="0" y="0" ellipseWidth="20" fillColor="0xffffff" strokeColor="0x0276d0" strokeWeight="4" ellipseHeight="20"/>
 	<e:Label id="lb_text" text="字" textColor="0x000000" size="58" verticalCenter="0" horizontalCenter="0"/>
 </e:Skin>

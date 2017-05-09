@@ -3,7 +3,7 @@
 class LevelDataItem
 {
     public answer:string;
-    public imgSource:string;
+    public img:string;
     public word:string;
     public tip:string;
     public content:string;

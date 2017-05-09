@@ -11,38 +11,39 @@
 	</e:Button>
 	<e:Image source="WordFrame_png" horizontalCenter="0" y="128" touchEnabled="false" locked="true"/>
 	<e:Group id="gp_answer" width="361.33" height="83" x="177.99" y="477.11" anchorOffsetX="0" anchorOffsetY="0">
-		<ns1:AnswerWord width="80" height="80" x="-50" y="362" skinName="WordSkin" scaleX="1" scaleY="1"/>
-		<ns1:AnswerWord width="80" height="80" x="-40" y="372" skinName="WordSkin" scaleX="1" scaleY="1"/>
-		<ns1:AnswerWord width="80" height="80" x="-30" y="382" skinName="WordSkin" scaleX="1" scaleY="1"/>
-		<ns1:AnswerWord width="80" height="80" x="-20" y="392" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<ns1:AnswerWord width="80" height="80" x="-50" y="362" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
+		<ns1:AnswerWord width="80" height="80" x="-40" y="372" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
+		<ns1:AnswerWord width="80" height="80" x="-30" y="382" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
+		<ns1:AnswerWord width="80" height="80" x="-20" y="392" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
 		<e:layout>
 			<e:TileLayout horizontalGap="14" verticalGap="16" requestedRowCount="1"/>
 		</e:layout>
 	</e:Group>
 	<e:Group id="gp_words" width="519.7" height="374.24" y="621" anchorOffsetX="0" anchorOffsetY="0" horizontalCenter="0">
-		<ns1:Word width="80" height="80" x="-349" y="-479" skinName="WordSkin" scaleX="1" scaleY="1"/>
-		<ns1:Word width="80" height="80" x="-339" y="-469" skinName="WordSkin" scaleX="1" scaleY="1"/>
-		<ns1:Word width="80" height="80" x="-329" y="-459" skinName="WordSkin" scaleX="1" scaleY="1"/>
-		<ns1:Word width="80" height="80" x="-319" y="-449" skinName="WordSkin" scaleX="1" scaleY="1"/>
-		<ns1:Word width="80" height="80" x="-309" y="-439" skinName="WordSkin" scaleX="1" scaleY="1"/>
-		<ns1:Word width="80" height="80" x="-339" y="-469" skinName="WordSkin" scaleX="1" scaleY="1"/>
-		<ns1:Word width="80" height="80" x="-329" y="-459" skinName="WordSkin" scaleX="1" scaleY="1"/>
-		<ns1:Word width="80" height="80" x="-319" y="-449" skinName="WordSkin" scaleX="1" scaleY="1"/>
-		<ns1:Word width="80" height="80" x="-309" y="-439" skinName="WordSkin" scaleX="1" scaleY="1"/>
-		<ns1:Word width="80" height="80" x="-299" y="-429" skinName="WordSkin" scaleX="1" scaleY="1"/>
-		<ns1:Word width="80" height="80" x="-329" y="-459" skinName="WordSkin" scaleX="1" scaleY="1"/>
-		<ns1:Word width="80" height="80" x="-319" y="-449" skinName="WordSkin" scaleX="1" scaleY="1"/>
-		<ns1:Word width="80" height="80" x="-309" y="-439" skinName="WordSkin" scaleX="1" scaleY="1"/>
-		<ns1:Word width="80" height="80" x="-299" y="-429" skinName="WordSkin" scaleX="1" scaleY="1"/>
-		<ns1:Word width="80" height="80" x="-289" y="-419" skinName="WordSkin" scaleX="1" scaleY="1"/>
-		<ns1:Word width="80" height="80" x="-319" y="-449" skinName="WordSkin" scaleX="1" scaleY="1"/>
-		<ns1:Word width="80" height="80" x="-309" y="-439" skinName="WordSkin" scaleX="1" scaleY="1"/>
-		<ns1:Word width="80" height="80" x="-299" y="-429" skinName="WordSkin" scaleX="1" scaleY="1"/>
-		<ns1:Word width="80" height="80" x="-289" y="-419" skinName="WordSkin" scaleX="1" scaleY="1"/>
-		<ns1:Word width="80" height="80" x="-279" y="-409" skinName="WordSkin" scaleX="1" scaleY="1"/>
+		<ns1:Word width="80" height="80" x="-349" y="-479" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
+		<ns1:Word width="80" height="80" x="-339" y="-469" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
+		<ns1:Word width="80" height="80" x="-329" y="-459" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
+		<ns1:Word width="80" height="80" x="-319" y="-449" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
+		<ns1:Word width="80" height="80" x="-309" y="-439" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
+		<ns1:Word width="80" height="80" x="-339" y="-469" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
+		<ns1:Word width="80" height="80" x="-329" y="-459" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
+		<ns1:Word width="80" height="80" x="-319" y="-449" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
+		<ns1:Word width="80" height="80" x="-309" y="-439" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
+		<ns1:Word width="80" height="80" x="-299" y="-429" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
+		<ns1:Word width="80" height="80" x="-329" y="-459" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
+		<ns1:Word width="80" height="80" x="-319" y="-449" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
+		<ns1:Word width="80" height="80" x="-309" y="-439" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
+		<ns1:Word width="80" height="80" x="-299" y="-429" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
+		<ns1:Word width="80" height="80" x="-289" y="-419" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
+		<ns1:Word width="80" height="80" x="-319" y="-449" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
+		<ns1:Word width="80" height="80" x="-309" y="-439" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
+		<ns1:Word width="80" height="80" x="-299" y="-429" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
+		<ns1:Word width="80" height="80" x="-289" y="-419" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
+		<ns1:Word width="80" height="80" x="-279" y="-409" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
 		<e:layout>
 			<e:TileLayout horizontalGap="30" requestedRowCount="4" requestedColumnCount="5" verticalGap="18"/>
 		</e:layout>
 	</e:Group>
-	<e:Image width="390" height="260" y="181" horizontalCenter="0"/>
+	<e:Image id="img_question" width="390" height="260" y="181" horizontalCenter="0"/>
+	<e:Image source="Result_png" y="583" horizontalCenter="0" visible="false"/>
 </e:Skin>
