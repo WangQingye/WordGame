@@ -2,6 +2,8 @@
   "autoGenerateExmlsList": true,
   "exmls": [
     "resource/eui_skins/BeginSence.exml",
+    "resource/eui_skins/WordSkin.exml",
+    "resource/eui_skins/GameSenceSkin.exml",
     "resource/eui_skins/LevelIconSkin.exml",
     "resource/eui_skins/MissonSenceSkin.exml"
   ]

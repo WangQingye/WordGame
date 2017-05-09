@@ -33,6 +33,7 @@ var MissonSence = (function (_super) {
         var spanx = 720 / col; //行间距
         var spany = 1136 / row; //列间距
         var group = new eui.Group();
+        var mileStone = LevelDataManager.getInstance().mileStone;
         group.width = 720;
         group.height = spany * 400; //总高度
         for (var i = 0; i < 400; i++) {
@@ -42,15 +43,27 @@ var MissonSence = (function (_super) {
             icon.x = Math.sin(icon.y / 180 * Math.PI) * 200 + group.width / 2;
             icon.y += spany * i / 2;
             icon.y = group.height - icon.y - spany * 2;
+            icon.enabled = icon.level < mileStone; //小于最大关卡的话按钮为灰色
             group.addChild(icon);
         }
-        //group.cacheAsBitmap = true;
+        group.touchThrough = true;
+        group.touchChildren = true;
         this.gp_levels.addChild(group);
         this.gp_levels.scrollV = group.height - 1100;
     };
     MissonSence.prototype.goToGameSence = function (e) {
+        console.log(e.target instanceof eui.Image);
+        console.log(e.target instanceof eui.Group);
+        console.log(e.target instanceof eui.Scroller);
         if (e.target.level) {
+            //如果大于最大关卡了就重新设置最大关卡
+            if (e.target.level > LevelDataManager.getInstance().mileStone) {
+                LevelDataManager.getInstance().mileStone = e.target.level;
+            }
             console.log(e.target.level);
+            this.parent.addChild(GameSence.getInstance());
+            GameSence.getInstance().initLevel(e.target.level);
+            this.parent.removeChild(this);
         }
     };
     return MissonSence;

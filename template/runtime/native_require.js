@@ -8,13 +8,17 @@ var game_file_list = [
 	"libs/modules/eui/eui.js",
 	"libs/modules/tween/tween.js",
 	"polyfill/promise.js",
-	"bin-debug/AssetAdapter.js",
-	"bin-debug/Game/LevelIcon.js",
-	"bin-debug/Game/MissonSence.js",
-	"bin-debug/Game/StartSence.js",
+	"bin-debug/View/Item/Word.js",
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
+	"bin-debug/Model/LevelDataManager.js",
 	"bin-debug/ThemeAdapter.js",
+	"bin-debug/View/StartSence.js",
+	"bin-debug/View/Item/AnswerWord.js",
+	"bin-debug/View/Item/LevelIcon.js",
+	"bin-debug/AssetAdapter.js",
+	"bin-debug/View/MissonSence.js",
+	"bin-debug/View/GameSence.js",
 	//----auto game_file_list end----
 ];
 
