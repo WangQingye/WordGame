@@ -8,9 +8,9 @@ class MissonSence extends eui.Component
     {
         super();
         this.skinName = 'resource/eui_skins/MissonSenceSkin.exml'
-        this.btn_back.addEventListener(egret.TouchEvent.TOUCH_TAP,this.backToMain,this)
-        this.addEventListener(egret.TouchEvent.TOUCH_TAP,this.goToGameSence,this)
+        this.btn_back.addEventListener(egret.TouchEvent.TOUCH_TAP,this.backToMain,this)        
         this.createMisson();
+        this.addEventListener(egret.TouchEvent.TOUCH_TAP,this.goToGameSence,this)
     }
 
     private static instance: MissonSence;
@@ -49,19 +49,15 @@ class MissonSence extends eui.Component
             icon.enabled = icon.level < mileStone //小于最大关卡的话按钮为灰色
             group.addChild(icon);
         }
-        // group.touchThrough = true;
-        // group.touchEnabled = true;
-        // group.touchChildren = true;
+        group.touchChildren = true;
         this.gp_levels.addChild(group);
         this.gp_levels.scrollV = group.height - 1100;
     }
 
     private goToGameSence(e:egret.TouchEvent):void
     {
-        // console.log(e.target instanceof eui.Image);
-        // console.log(e.target instanceof eui.Group);
-        // console.log(e.target instanceof eui.Scroller);
-        // console.log(e.target);
+        console.log(e.target);
+        console.log(e.target.level);
         if(e.target.level)
         {
             //如果大于最大关卡了就重新设置最大关卡
@@ -70,9 +66,9 @@ class MissonSence extends eui.Component
                 LevelDataManager.getInstance().mileStone = e.target.level;
             }
             console.log(e.target.level);
+            this.parent.addChild(GameSence.getInstance());
+            GameSence.getInstance().initLevel(1);
+            this.parent.removeChild(this);
         }
-        this.parent.addChild(GameSence.getInstance());
-        GameSence.getInstance().initLevel(1);
-        this.parent.removeChild(this);
     }
 } 

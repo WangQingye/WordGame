@@ -12,8 +12,8 @@ var LevelIcon = (function (_super) {
     function LevelIcon() {
         var _this = _super.call(this) || this;
         _this.skinName = 'resource/eui_skins/LevelIconSkin.exml';
+        _this.btn_level.addEventListener(egret.TouchEvent.TOUCH_TAP, _this.goToGameSence, _this);
         return _this;
-        //this.btn_level.addEventListener(egret.TouchEvent.TOUCH_TAP,this.goMainGame,this)
     }
     Object.defineProperty(LevelIcon.prototype, "level", {
         get: function () {
@@ -26,6 +26,18 @@ var LevelIcon = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    LevelIcon.prototype.goToGameSence = function () {
+        if (this.level) {
+            //如果大于最大关卡了就重新设置最大关卡
+            if (this.level > LevelDataManager.getInstance().mileStone) {
+                LevelDataManager.getInstance().mileStone = this.level;
+            }
+            console.log(this.level);
+            this.parent.addChild(GameSence.getInstance());
+            GameSence.getInstance().initLevel(1);
+            this.parent.removeChild(this);
+        }
+    };
     return LevelIcon;
 }(eui.Button));
 __reflect(LevelIcon.prototype, "LevelIcon");

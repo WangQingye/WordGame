@@ -6,6 +6,7 @@ class GameSence extends eui.Component
     {
         super();
         this.skinName = 'resource/eui_skins/GameSenceSkin.exml'
+        this.btn_back.addEventListener(egret.TouchEvent.TOUCH_TAP,this.back,this);
         this.gp_words.addEventListener(egret.TouchEvent.TOUCH_TAP,this.touchWord,this);
         this.gp_answer.addEventListener(egret.TouchEvent.TOUCH_TAP,this.touchWord,this);
     }
@@ -17,6 +18,14 @@ class GameSence extends eui.Component
         }
         return this.instance;
     }
+
+    /**返回关卡界面*/
+    private back():void
+    {
+        this.parent.addChild(MissonSence.getInstance());
+        this.parent.removeChild(this);
+    }
+
     /**选择区域*/
     private gp_words:eui.Group;
     /**答案区域*/

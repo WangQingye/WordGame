@@ -12,6 +12,7 @@ var GameSence = (function (_super) {
     function GameSence() {
         var _this = _super.call(this) || this;
         _this.skinName = 'resource/eui_skins/GameSenceSkin.exml';
+        _this.btn_back.addEventListener(egret.TouchEvent.TOUCH_TAP, _this.back, _this);
         _this.gp_words.addEventListener(egret.TouchEvent.TOUCH_TAP, _this.touchWord, _this);
         _this.gp_answer.addEventListener(egret.TouchEvent.TOUCH_TAP, _this.touchWord, _this);
         return _this;
@@ -21,6 +22,11 @@ var GameSence = (function (_super) {
             this.instance = new GameSence();
         }
         return this.instance;
+    };
+    /**返回关卡界面*/
+    GameSence.prototype.back = function () {
+        this.parent.addChild(MissonSence.getInstance());
+        this.parent.removeChild(this);
     };
     /**初始化关卡*/
     GameSence.prototype.initLevel = function (level) {

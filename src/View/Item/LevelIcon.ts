@@ -6,7 +6,7 @@ class LevelIcon extends eui.Button
     {
         super();
         this.skinName = 'resource/eui_skins/LevelIconSkin.exml'
-        //this.btn_level.addEventListener(egret.TouchEvent.TOUCH_TAP,this.goMainGame,this)
+        this.btn_level.addEventListener(egret.TouchEvent.TOUCH_TAP,this.goToGameSence,this)
     }
 
     
@@ -17,6 +17,22 @@ class LevelIcon extends eui.Button
     public set level(v : number) {
         this._level = v;
         this.btn_level['labelDisplay'].text = v+'';
+    }
+
+    private goToGameSence():void
+    {
+        if(this.level)
+        {
+            //如果大于最大关卡了就重新设置最大关卡
+            if(this.level > LevelDataManager.getInstance().mileStone)
+            {
+                LevelDataManager.getInstance().mileStone = this.level;
+            }
+            console.log(this.level);
+            this.parent.addChild(GameSence.getInstance());
+            GameSence.getInstance().initLevel(1);
+            this.parent.removeChild(this);
+        }
     }
 
 }
