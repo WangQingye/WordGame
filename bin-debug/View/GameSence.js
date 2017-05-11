@@ -50,7 +50,6 @@ var GameSence = (function (_super) {
             arr.splice(i, 1);
         }
         this.setWords(wordList);
-        console.log(levelData);
         this.img_question.source = 'resource/assets/' + levelData.img;
     };
     /**给每个方块赋值*/
@@ -81,20 +80,16 @@ var GameSence = (function (_super) {
         }
         //点击选择区域
         if (e.target instanceof Word) {
-            console.log(1);
             var answerWord = null;
             for (var i = 0; i < this.gp_answer.numChildren; i++) {
-                console.log(2);
                 var answer = this.gp_answer.getChildAt(i);
                 if (answer.selectWord == null) {
-                    console.log(i);
                     answerWord = answer;
                     break;
                 }
             }
             //每次填充都判断是否胜利（因为有可能已经填了后面的，改了前面的）
             if (answerWord != null) {
-                console.log(3);
                 answerWord.setSelectWord(e.target);
                 //答案字符
                 var str = '';
@@ -103,7 +98,7 @@ var GameSence = (function (_super) {
                     str += answer.text;
                 }
                 if (str == LevelDataManager.getInstance().getLevelDate(this.levelIndex).answer) {
-                    console.log('done');
+                    console.log('过关，逻辑待写');
                 }
             }
         }

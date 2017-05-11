@@ -47,12 +47,13 @@ var MissonSence = (function (_super) {
             group.addChild(icon);
         }
         group.touchChildren = true;
+        group.touchThrough = true;
         this.gp_levels.addChild(group);
         this.gp_levels.scrollV = group.height - 1100;
     };
     MissonSence.prototype.goToGameSence = function (e) {
         console.log(e.target);
-        console.log(e.target.level);
+        console.log(e.currentTarget);
         if (e.target.level) {
             //如果大于最大关卡了就重新设置最大关卡
             if (e.target.level > LevelDataManager.getInstance().mileStone) {

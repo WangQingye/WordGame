@@ -50,6 +50,7 @@ class MissonSence extends eui.Component
             group.addChild(icon);
         }
         group.touchChildren = true;
+        group.touchThrough = true;
         this.gp_levels.addChild(group);
         this.gp_levels.scrollV = group.height - 1100;
     }
@@ -57,7 +58,7 @@ class MissonSence extends eui.Component
     private goToGameSence(e:egret.TouchEvent):void
     {
         console.log(e.target);
-        console.log(e.target.level);
+        console.log(e.currentTarget);
         if(e.target.level)
         {
             //如果大于最大关卡了就重新设置最大关卡

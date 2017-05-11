@@ -64,7 +64,6 @@ class GameSence extends eui.Component
             arr.splice(i,1);
         }
         this.setWords(wordList);
-        console.log(levelData);
         this.img_question.source = 'resource/assets/' + levelData.img;
     }
 
@@ -104,15 +103,12 @@ class GameSence extends eui.Component
         //点击选择区域
         if(e.target instanceof Word)
         {
-            console.log(1)
             let answerWord:AnswerWord = null;
             for(let i = 0; i < this.gp_answer.numChildren; i++)
             {
-                console.log(2)
                 let answer = <AnswerWord>this.gp_answer.getChildAt(i);
                 if(answer.selectWord == null) //还没有填充
                 {
-                    console.log(i)
                     answerWord = answer;
                     break;
                 }
@@ -120,7 +116,6 @@ class GameSence extends eui.Component
             //每次填充都判断是否胜利（因为有可能已经填了后面的，改了前面的）
             if(answerWord != null)
             {
-                console.log(3)
                 answerWord.setSelectWord(e.target);
                 //答案字符
                 let str = '';
@@ -131,10 +126,9 @@ class GameSence extends eui.Component
                 }
                 if (str == LevelDataManager.getInstance().getLevelDate(this.levelIndex).answer)
                 {
-                    console.log('done');
+                    console.log('过关，逻辑待写');
                 }
             }
         }
-
     }
 }
