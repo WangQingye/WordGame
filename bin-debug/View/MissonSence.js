@@ -43,7 +43,13 @@ var MissonSence = (function (_super) {
             icon.x = Math.sin(icon.y / 180 * Math.PI) * 200 + group.width / 2;
             icon.y += spany * i / 2;
             icon.y = group.height - icon.y - spany * 2;
-            icon.enabled = icon.level < mileStone; //小于最大关卡的话按钮为灰色
+            //小于最大关卡的话按钮为灰色
+            if (icon.level <= mileStone) {
+                icon.enabled = true;
+            }
+            else {
+                icon.enabled = false;
+            }
             group.addChild(icon);
         }
         group.touchChildren = true;

@@ -12,9 +12,10 @@ var GameSence = (function (_super) {
     function GameSence() {
         var _this = _super.call(this) || this;
         _this.skinName = 'resource/eui_skins/GameSenceSkin.exml';
-        _this.btn_back.addEventListener(egret.TouchEvent.TOUCH_TAP, _this.back, _this);
+        _this.btn_back.addEventListener(egret.TouchEvent.TOUCH_TAP, _this.backToMisson, _this);
         _this.gp_words.addEventListener(egret.TouchEvent.TOUCH_TAP, _this.touchWord, _this);
         _this.gp_answer.addEventListener(egret.TouchEvent.TOUCH_TAP, _this.touchWord, _this);
+        _this.btn_next.addEventListener(egret.TouchEvent.TOUCH_TAP, _this.nextMisson, _this);
         return _this;
     }
     GameSence.getInstance = function () {
@@ -24,16 +25,16 @@ var GameSence = (function (_super) {
         return this.instance;
     };
     /**返回关卡界面*/
-    GameSence.prototype.back = function () {
+    GameSence.prototype.backToMisson = function () {
         this.parent.addChild(MissonSence.getInstance());
         this.parent.removeChild(this);
     };
     /**初始化关卡*/
     GameSence.prototype.initLevel = function (level) {
         this.levelIndex = level;
-        var levelData = LevelDataManager.getInstance().getLevelDate(level);
+        this.levelData = LevelDataManager.getInstance().getLevelDate(level);
         //将答案和选择混淆
-        var words = levelData.answer + levelData.word;
+        var words = this.levelData.answer + this.levelData.word;
         //因为给出的选择不够，从其他关卡拿过来，凑够20个，调整难度
         while (words.length == 10) {
             var i = Math.floor(Math.random() * 400);
@@ -50,7 +51,8 @@ var GameSence = (function (_super) {
             arr.splice(i, 1);
         }
         this.setWords(wordList);
-        this.img_question.source = 'resource/assets/' + levelData.img;
+        console.log(this.levelData);
+        this.img_question.source = 'resource/assets/' + this.levelData.img;
     };
     /**给每个方块赋值*/
     GameSence.prototype.setWords = function (arr) {
@@ -80,16 +82,20 @@ var GameSence = (function (_super) {
         }
         //点击选择区域
         if (e.target instanceof Word) {
+            console.log(1);
             var answerWord = null;
             for (var i = 0; i < this.gp_answer.numChildren; i++) {
+                console.log(2);
                 var answer = this.gp_answer.getChildAt(i);
                 if (answer.selectWord == null) {
+                    console.log(i);
                     answerWord = answer;
                     break;
                 }
             }
             //每次填充都判断是否胜利（因为有可能已经填了后面的，改了前面的）
             if (answerWord != null) {
+                console.log(3);
                 answerWord.setSelectWord(e.target);
                 //答案字符
                 var str = '';
@@ -97,11 +103,21 @@ var GameSence = (function (_super) {
                     var answer = this.gp_answer.getChildAt(i);
                     str += answer.text;
                 }
-                if (str == LevelDataManager.getInstance().getLevelDate(this.levelIndex).answer) {
-                    console.log('过关，逻辑待写');
+                if (str == this.levelData.answer) {
+                    this.showAnswer();
                 }
             }
         }
+    };
+    GameSence.prototype.showAnswer = function () {
+        console.log(LevelDataManager.getInstance().getLevelDate(this.levelIndex));
+        this.gp_done.visible = true;
+        this.lb_answer.text = "       " + this.levelData.tip;
+        this.lb_explain.text = "       " + this.levelData.content;
+    };
+    GameSence.prototype.nextMisson = function () {
+        this.initLevel(this.levelIndex + 1);
+        this.gp_done.visible = false;
     };
     return GameSence;
 }(eui.Component));

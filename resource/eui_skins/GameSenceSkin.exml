@@ -19,7 +19,7 @@
 			<e:TileLayout horizontalGap="14" verticalGap="16" requestedRowCount="1"/>
 		</e:layout>
 	</e:Group>
-	<e:Group id="gp_words" width="519.7" height="374.24" y="621" anchorOffsetX="0" anchorOffsetY="0" horizontalCenter="0">
+	<e:Group id="gp_words" width="519.7" height="374.24" y="621" anchorOffsetX="0" anchorOffsetY="0" horizontalCenter="0" locked="true">
 		<ns1:Word width="80" height="80" x="-349" y="-479" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
 		<ns1:Word width="80" height="80" x="-339" y="-469" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
 		<ns1:Word width="80" height="80" x="-329" y="-459" skinName="WordSkin" scaleX="1" scaleY="1" touchChildren="false"/>
@@ -46,4 +46,17 @@
 	</e:Group>
 	<e:Image id="img_question" width="390" height="260" y="181" horizontalCenter="0"/>
 	<e:Image source="Result_png" y="583" horizontalCenter="0" visible="false"/>
+	<e:Group id="gp_done" width="628.79" height="443.94" y="599" anchorOffsetX="0" anchorOffsetY="0" horizontalCenter="0" visible="false">
+		<e:Image source="Result_png" y="-21" horizontalCenter="0" x="-20.999999999999993" scaleX="1" scaleY="1"/>
+		<e:Button id="btn_next" label="" x="391.64" y="335.32">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="ResultBtn_png" source.down="ResultBtn1_png"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Label id="lb_answer" text="       一目了然一目了然一目了然一目了然一目了然一目了然一目了然一目了然一目了然一目了然" y="94" textColor="0xff2121" size="30" width="439.67" bold="true" textAlign="left" x="95.35" anchorOffsetX="0" anchorOffsetY="0" height="67.33"/>
+		<e:Label id="lb_explain" text="       的哈数据库的贺卡设计和大家看撒的哈数据库的贺卡设计和的哈数据库的贺卡设计和大家看撒大家看撒。" x="70.35" y="211.02" textColor="0xff1919"  anchorOffsetX="0" width="482" multiline="true"/>
+	</e:Group>
 </e:Skin>

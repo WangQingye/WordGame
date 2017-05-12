@@ -6,9 +6,10 @@ class GameSence extends eui.Component
     {
         super();
         this.skinName = 'resource/eui_skins/GameSenceSkin.exml'
-        this.btn_back.addEventListener(egret.TouchEvent.TOUCH_TAP,this.back,this);
+        this.btn_back.addEventListener(egret.TouchEvent.TOUCH_TAP,this.backToMisson,this);
         this.gp_words.addEventListener(egret.TouchEvent.TOUCH_TAP,this.touchWord,this);
         this.gp_answer.addEventListener(egret.TouchEvent.TOUCH_TAP,this.touchWord,this);
+        this.btn_next.addEventListener(egret.TouchEvent.TOUCH_TAP,this.nextMisson,this);
     }
 
     private static instance: GameSence;
@@ -20,7 +21,7 @@ class GameSence extends eui.Component
     }
 
     /**返回关卡界面*/
-    private back():void
+    private backToMisson():void
     {
         this.parent.addChild(MissonSence.getInstance());
         this.parent.removeChild(this);
@@ -34,15 +35,16 @@ class GameSence extends eui.Component
     private img_question:eui.Image;
     /**关卡序号*/
     private levelIndex:number;
-
+    /**关卡数据*/
+    private levelData;
     /**初始化关卡*/
     public initLevel(level:number)
     {
         this.levelIndex = level;
-        let levelData = LevelDataManager.getInstance().getLevelDate(level);
+        this.levelData = LevelDataManager.getInstance().getLevelDate(level);
         
         //将答案和选择混淆
-        let words = levelData.answer + levelData.word;
+        let words = this.levelData.answer + this.levelData.word;
 
         //因为给出的选择不够，从其他关卡拿过来，凑够20个，调整难度
         while(words.length == 10)
@@ -64,7 +66,8 @@ class GameSence extends eui.Component
             arr.splice(i,1);
         }
         this.setWords(wordList);
-        this.img_question.source = 'resource/assets/' + levelData.img;
+        console.log(this.levelData);
+        this.img_question.source = 'resource/assets/' + this.levelData.img;
     }
 
     /**给每个方块赋值*/
@@ -86,6 +89,7 @@ class GameSence extends eui.Component
         }
     }
 
+
     /**点击字块*/
     private touchWord(e:egret.TouchEvent):void
     {
@@ -103,12 +107,15 @@ class GameSence extends eui.Component
         //点击选择区域
         if(e.target instanceof Word)
         {
+            console.log(1)
             let answerWord:AnswerWord = null;
             for(let i = 0; i < this.gp_answer.numChildren; i++)
             {
+                console.log(2)
                 let answer = <AnswerWord>this.gp_answer.getChildAt(i);
                 if(answer.selectWord == null) //还没有填充
                 {
+                    console.log(i)
                     answerWord = answer;
                     break;
                 }
@@ -116,6 +123,7 @@ class GameSence extends eui.Component
             //每次填充都判断是否胜利（因为有可能已经填了后面的，改了前面的）
             if(answerWord != null)
             {
+                console.log(3)
                 answerWord.setSelectWord(e.target);
                 //答案字符
                 let str = '';
@@ -124,11 +132,33 @@ class GameSence extends eui.Component
                     let answer = <AnswerWord>this.gp_answer.getChildAt(i);
                     str += answer.text;
                 }
-                if (str == LevelDataManager.getInstance().getLevelDate(this.levelIndex).answer)
+                if (str == this.levelData.answer)
                 {
-                    console.log('过关，逻辑待写');
+                    this.showAnswer();
                 }
             }
         }
+    }    
+    /**答案区域*/
+    private gp_done:eui.Group;
+    /**答案*/
+    private lb_answer:eui.Label;
+    /**解释*/
+    private lb_explain:eui.Label;
+    /**下一关*/
+    private btn_next:eui.Button;
+
+    private showAnswer():void
+    {
+        console.log(LevelDataManager.getInstance().getLevelDate(this.levelIndex));
+        this.gp_done.visible = true;
+        this.lb_answer.text = "       " + this.levelData.tip;
+        this.lb_explain.text ="       " + this.levelData.content;
+    }
+
+    private nextMisson():void
+    {
+        this.initLevel(this.levelIndex+1);
+        this.gp_done.visible = false;
     }
 }
