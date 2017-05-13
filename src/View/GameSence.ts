@@ -2,11 +2,15 @@
 class GameSence extends eui.Component
 {
     private btn_back:eui.Button;
+    private btn_tip:eui.Button;
+    private btn_tipok:eui.Button;
     public constructor()
     {
         super();
         this.skinName = 'resource/eui_skins/GameSenceSkin.exml'
         this.btn_back.addEventListener(egret.TouchEvent.TOUCH_TAP,this.backToMisson,this);
+        this.btn_tip.addEventListener(egret.TouchEvent.TOUCH_TAP,this.showTip,this);
+        this.btn_tipok.addEventListener(egret.TouchEvent.TOUCH_TAP,this.closeTip,this);
         this.gp_words.addEventListener(egret.TouchEvent.TOUCH_TAP,this.touchWord,this);
         this.gp_answer.addEventListener(egret.TouchEvent.TOUCH_TAP,this.touchWord,this);
         this.btn_next.addEventListener(egret.TouchEvent.TOUCH_TAP,this.nextMisson,this);
@@ -23,6 +27,8 @@ class GameSence extends eui.Component
     /**返回关卡界面*/
     private backToMisson():void
     {
+        this.gp_tip.visible = false;
+        this.gp_done.visible = false;
         this.parent.addChild(MissonSence.getInstance());
         this.parent.removeChild(this);
     }
@@ -85,7 +91,6 @@ class GameSence extends eui.Component
             let answerWord = <AnswerWord>this.gp_answer.getChildAt(i);
             answerWord.selectWord = null;
             answerWord.text = '';
-            answerWord.visible = true;
         }
     }
 
@@ -107,15 +112,12 @@ class GameSence extends eui.Component
         //点击选择区域
         if(e.target instanceof Word)
         {
-            console.log(1)
             let answerWord:AnswerWord = null;
             for(let i = 0; i < this.gp_answer.numChildren; i++)
             {
-                console.log(2)
                 let answer = <AnswerWord>this.gp_answer.getChildAt(i);
                 if(answer.selectWord == null) //还没有填充
                 {
-                    console.log(i)
                     answerWord = answer;
                     break;
                 }
@@ -123,8 +125,8 @@ class GameSence extends eui.Component
             //每次填充都判断是否胜利（因为有可能已经填了后面的，改了前面的）
             if(answerWord != null)
             {
-                console.log(3)
                 answerWord.setSelectWord(e.target);
+                console.log(answerWord.text);
                 //答案字符
                 let str = '';
                 for(let i = 0; i < this.gp_answer.numChildren; i++)
@@ -139,14 +141,32 @@ class GameSence extends eui.Component
             }
         }
     }    
+    /**提示区域*/
+    private gp_tip:eui.Group;
     /**答案区域*/
     private gp_done:eui.Group;
     /**答案*/
     private lb_answer:eui.Label;
     /**解释*/
     private lb_explain:eui.Label;
+    /**提示*/
+    private lb_tips:eui.Label;
     /**下一关*/
     private btn_next:eui.Button;
+
+
+    /**展示提示*/
+    private showTip():void
+    {
+        this.gp_tip.visible = true;
+        this.lb_tips.text = "       " + this.levelData.word;
+    }
+
+    /**关闭提示*/
+    private closeTip():void
+    {
+        this.gp_tip.visible = false;
+    }
 
     private showAnswer():void
     {

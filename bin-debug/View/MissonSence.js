@@ -36,7 +36,7 @@ var MissonSence = (function (_super) {
         var mileStone = LevelDataManager.getInstance().mileStone;
         group.width = 720;
         group.height = spany * 400; //总高度
-        for (var i = 0; i < 100; i++) {
+        for (var i = 0; i < 400; i++) {
             var icon = new LevelIcon();
             icon.level = i + 1;
             icon.y = spany * i / 2;
@@ -49,6 +49,7 @@ var MissonSence = (function (_super) {
             }
             else {
                 icon.enabled = false;
+                icon['img_levelbg'].source = "gs_select_dis_png";
             }
             group.addChild(icon);
         }
@@ -67,7 +68,7 @@ var MissonSence = (function (_super) {
             }
             console.log(e.target.level);
             this.parent.addChild(GameSence.getInstance());
-            GameSence.getInstance().initLevel(1);
+            GameSence.getInstance().initLevel(e.target.level);
             this.parent.removeChild(this);
         }
     };

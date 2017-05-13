@@ -48,6 +48,6 @@ class LevelDataManager{
     /**设置当前最远关卡*/
     public set mileStone(level:number)
     {
-        egret.localStorage.setItem('CYDZZ_MILE',level.toString());
+        egret.localStorage.setItem('CYDZZ_MILE',level.toString());        
     }
 }

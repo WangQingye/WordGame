@@ -13,6 +13,8 @@ var GameSence = (function (_super) {
         var _this = _super.call(this) || this;
         _this.skinName = 'resource/eui_skins/GameSenceSkin.exml';
         _this.btn_back.addEventListener(egret.TouchEvent.TOUCH_TAP, _this.backToMisson, _this);
+        _this.btn_tip.addEventListener(egret.TouchEvent.TOUCH_TAP, _this.showTip, _this);
+        _this.btn_tipok.addEventListener(egret.TouchEvent.TOUCH_TAP, _this.closeTip, _this);
         _this.gp_words.addEventListener(egret.TouchEvent.TOUCH_TAP, _this.touchWord, _this);
         _this.gp_answer.addEventListener(egret.TouchEvent.TOUCH_TAP, _this.touchWord, _this);
         _this.btn_next.addEventListener(egret.TouchEvent.TOUCH_TAP, _this.nextMisson, _this);
@@ -26,6 +28,8 @@ var GameSence = (function (_super) {
     };
     /**返回关卡界面*/
     GameSence.prototype.backToMisson = function () {
+        this.gp_tip.visible = false;
+        this.gp_done.visible = false;
         this.parent.addChild(MissonSence.getInstance());
         this.parent.removeChild(this);
     };
@@ -66,7 +70,6 @@ var GameSence = (function (_super) {
             var answerWord = this.gp_answer.getChildAt(i);
             answerWord.selectWord = null;
             answerWord.text = '';
-            answerWord.visible = true;
         }
     };
     /**点击字块*/
@@ -82,21 +85,18 @@ var GameSence = (function (_super) {
         }
         //点击选择区域
         if (e.target instanceof Word) {
-            console.log(1);
             var answerWord = null;
             for (var i = 0; i < this.gp_answer.numChildren; i++) {
-                console.log(2);
                 var answer = this.gp_answer.getChildAt(i);
                 if (answer.selectWord == null) {
-                    console.log(i);
                     answerWord = answer;
                     break;
                 }
             }
             //每次填充都判断是否胜利（因为有可能已经填了后面的，改了前面的）
             if (answerWord != null) {
-                console.log(3);
                 answerWord.setSelectWord(e.target);
+                console.log(answerWord.text);
                 //答案字符
                 var str = '';
                 for (var i = 0; i < this.gp_answer.numChildren; i++) {
@@ -108,6 +108,15 @@ var GameSence = (function (_super) {
                 }
             }
         }
+    };
+    /**展示提示*/
+    GameSence.prototype.showTip = function () {
+        this.gp_tip.visible = true;
+        this.lb_tips.text = "       " + this.levelData.word;
+    };
+    /**关闭提示*/
+    GameSence.prototype.closeTip = function () {
+        this.gp_tip.visible = false;
     };
     GameSence.prototype.showAnswer = function () {
         console.log(LevelDataManager.getInstance().getLevelDate(this.levelIndex));

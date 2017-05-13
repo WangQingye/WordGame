@@ -59,4 +59,24 @@
 		<e:Label id="lb_answer" text="       一目了然一目了然一目了然一目了然一目了然一目了然一目了然一目了然一目了然一目了然" y="94" textColor="0xff2121" size="30" width="439.67" bold="true" textAlign="left" x="95.35" anchorOffsetX="0" anchorOffsetY="0" height="67.33"/>
 		<e:Label id="lb_explain" text="       的哈数据库的贺卡设计和大家看撒的哈数据库的贺卡设计和的哈数据库的贺卡设计和大家看撒大家看撒。" x="70.35" y="211.02" textColor="0xff1919"  anchorOffsetX="0" width="482" multiline="true"/>
 	</e:Group>
+	<e:Group id="gp_tip" width="509.09" height="290.91" y="458" anchorOffsetX="0" anchorOffsetY="0" horizontalCenter="0" visible="false">
+		<e:Image source="Dialog_png" y="-2" horizontalCenter="0" x="0" scaleX="1" scaleY="1"/>
+		<e:Label id="lb_tips" text="大叔大婶大所大所大所大叔大婶大所大所大所" x="79" y="93" textColor="0xff1919" width="418"/>
+		<e:Button id="btn_tipok" label="" y="203.52" horizontalCenter="0">
+			<e:skinName>
+				<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="YesBtn_jpg" source.down="YesBtn1_jpg"/>
+				<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+	</e:Group>
+	<e:Button id="btn_tip" label="" x="614" y="9">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="btn_tip_down_png" source.down="btn_tip_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
 </e:Skin>

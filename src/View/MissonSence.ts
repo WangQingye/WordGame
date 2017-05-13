@@ -38,7 +38,7 @@ class MissonSence extends eui.Component
         group.width = 720;
         group.height = spany * 400; //总高度
 
-        for( let i = 0; i < 100; i++)
+        for( let i = 0; i < 400; i++)
         {
             var icon = new LevelIcon();
             icon.level = i + 1;
@@ -53,6 +53,7 @@ class MissonSence extends eui.Component
             }else
             {
                 icon.enabled = false;
+                icon['img_levelbg'].source = "gs_select_dis_png";
             }
             group.addChild(icon);
         }
@@ -75,7 +76,7 @@ class MissonSence extends eui.Component
             }
             console.log(e.target.level);
             this.parent.addChild(GameSence.getInstance());
-            GameSence.getInstance().initLevel(1);
+            GameSence.getInstance().initLevel(e.target.level);
             this.parent.removeChild(this);
         }
     }
