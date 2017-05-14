@@ -30,12 +30,14 @@ var GameSence = (function (_super) {
     GameSence.prototype.backToMisson = function () {
         this.gp_tip.visible = false;
         this.gp_done.visible = false;
+        MissonSence.getInstance().refreshLevel();
         this.parent.addChild(MissonSence.getInstance());
         this.parent.removeChild(this);
     };
     /**初始化关卡*/
     GameSence.prototype.initLevel = function (level) {
         this.levelIndex = level;
+        this.lb_level.text = "第" + level + "关";
         this.levelData = LevelDataManager.getInstance().getLevelDate(level);
         //将答案和选择混淆
         var words = this.levelData.answer + this.levelData.word;
@@ -57,6 +59,12 @@ var GameSence = (function (_super) {
         this.setWords(wordList);
         console.log(this.levelData);
         this.img_question.source = 'resource/assets/' + this.levelData.img;
+        //在这一关预加载下一关的图片，防止图片出现延迟
+        var nextData = LevelDataManager.getInstance().getLevelDate(level + 1);
+        var nextImg = 'resource/assets/' + nextData.img;
+        // RES.getRes(nextImg);
+        // RES.getResAsync
+        RES.getResByUrl(nextImg, function () { console.log('加载完成' + nextImg); }, this);
     };
     /**给每个方块赋值*/
     GameSence.prototype.setWords = function (arr) {
@@ -123,6 +131,10 @@ var GameSence = (function (_super) {
         this.gp_done.visible = true;
         this.lb_answer.text = "       " + this.levelData.tip;
         this.lb_explain.text = "       " + this.levelData.content;
+        //完成了这一关就可以进行下一关了。比如选择是第二关，完成后就打开第三关
+        if (this.levelIndex > LevelDataManager.getInstance().mileStone) {
+            LevelDataManager.getInstance().mileStone = this.levelIndex + 1;
+        }
     };
     GameSence.prototype.nextMisson = function () {
         this.initLevel(this.levelIndex + 1);

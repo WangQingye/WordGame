@@ -79,4 +79,5 @@
 			</e:Skin>
 		</e:skinName>
 	</e:Button>
+	<e:Label id="lb_level" text="第1关" y="28" horizontalCenter="0" stroke="3"/>
 </e:Skin>

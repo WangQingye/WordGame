@@ -41,6 +41,7 @@ var LevelDataManager = (function () {
         /**设置当前最远关卡*/
         set: function (level) {
             egret.localStorage.setItem('CYDZZ_MILE', level.toString());
+            console.log(this.mileStone);
         },
         enumerable: true,
         configurable: true

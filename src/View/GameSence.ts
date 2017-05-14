@@ -29,6 +29,7 @@ class GameSence extends eui.Component
     {
         this.gp_tip.visible = false;
         this.gp_done.visible = false;
+        MissonSence.getInstance().refreshLevel();
         this.parent.addChild(MissonSence.getInstance());
         this.parent.removeChild(this);
     }
@@ -39,6 +40,8 @@ class GameSence extends eui.Component
     private gp_answer:eui.Group;
     /**题目图片*/
     private img_question:eui.Image;
+    /**关卡显示*/
+    private lb_level:eui.Label;
     /**关卡序号*/
     private levelIndex:number;
     /**关卡数据*/
@@ -47,6 +50,7 @@ class GameSence extends eui.Component
     public initLevel(level:number)
     {
         this.levelIndex = level;
+        this.lb_level.text = "第" + level + "关";
         this.levelData = LevelDataManager.getInstance().getLevelDate(level);
         
         //将答案和选择混淆
@@ -74,6 +78,11 @@ class GameSence extends eui.Component
         this.setWords(wordList);
         console.log(this.levelData);
         this.img_question.source = 'resource/assets/' + this.levelData.img;
+
+        //在这一关预加载下一关的图片，防止图片出现延迟
+        let nextData= LevelDataManager.getInstance().getLevelDate(level+1);
+        let nextImg = 'resource/assets/' + nextData.img;
+        RES.getResByUrl(nextImg,()=>{console.log('加载完成' + nextImg)},this);
     }
 
     /**给每个方块赋值*/
@@ -126,7 +135,6 @@ class GameSence extends eui.Component
             if(answerWord != null)
             {
                 answerWord.setSelectWord(e.target);
-                console.log(answerWord.text);
                 //答案字符
                 let str = '';
                 for(let i = 0; i < this.gp_answer.numChildren; i++)
@@ -170,10 +178,15 @@ class GameSence extends eui.Component
 
     private showAnswer():void
     {
-        console.log(LevelDataManager.getInstance().getLevelDate(this.levelIndex));
         this.gp_done.visible = true;
         this.lb_answer.text = "       " + this.levelData.tip;
         this.lb_explain.text ="       " + this.levelData.content;
+
+        //完成了这一关就可以进行下一关了。比如选择是第二关，完成后就打开第三关
+        if(this.levelIndex > LevelDataManager.getInstance().mileStone)
+        {
+            LevelDataManager.getInstance().mileStone = this.levelIndex + 1;
+        }
     }
 
     private nextMisson():void
