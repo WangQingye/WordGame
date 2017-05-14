@@ -56,12 +56,14 @@ var MissonSence = (function (_super) {
             var icon = this.levelGroup.getChildAt(i);
             //小于最大关卡的话按钮为灰色
             var mileStone = LevelDataManager.getInstance().mileStone;
+            console.log(mileStone);
             if (icon.level <= mileStone) {
                 icon.enabled = true;
+                icon['img_levelbg'].source = "gs_select_1_png";
             }
             else {
                 icon.enabled = false;
-                icon['img_levelbg'].source = "gs_select_dis_png";
+                break; //这句代码很帅，因为其实执行到第一个false的时候就不许要再执行了。
             }
         }
     };

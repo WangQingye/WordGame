@@ -183,7 +183,7 @@ class GameSence extends eui.Component
         this.lb_explain.text ="       " + this.levelData.content;
 
         //完成了这一关就可以进行下一关了。比如选择是第二关，完成后就打开第三关
-        if(this.levelIndex > LevelDataManager.getInstance().mileStone)
+        if(this.levelIndex >= LevelDataManager.getInstance().mileStone)
         {
             LevelDataManager.getInstance().mileStone = this.levelIndex + 1;
         }

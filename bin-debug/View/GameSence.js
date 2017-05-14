@@ -62,8 +62,6 @@ var GameSence = (function (_super) {
         //在这一关预加载下一关的图片，防止图片出现延迟
         var nextData = LevelDataManager.getInstance().getLevelDate(level + 1);
         var nextImg = 'resource/assets/' + nextData.img;
-        // RES.getRes(nextImg);
-        // RES.getResAsync
         RES.getResByUrl(nextImg, function () { console.log('加载完成' + nextImg); }, this);
     };
     /**给每个方块赋值*/
@@ -104,7 +102,6 @@ var GameSence = (function (_super) {
             //每次填充都判断是否胜利（因为有可能已经填了后面的，改了前面的）
             if (answerWord != null) {
                 answerWord.setSelectWord(e.target);
-                console.log(answerWord.text);
                 //答案字符
                 var str = '';
                 for (var i = 0; i < this.gp_answer.numChildren; i++) {
@@ -127,12 +124,11 @@ var GameSence = (function (_super) {
         this.gp_tip.visible = false;
     };
     GameSence.prototype.showAnswer = function () {
-        console.log(LevelDataManager.getInstance().getLevelDate(this.levelIndex));
         this.gp_done.visible = true;
         this.lb_answer.text = "       " + this.levelData.tip;
         this.lb_explain.text = "       " + this.levelData.content;
         //完成了这一关就可以进行下一关了。比如选择是第二关，完成后就打开第三关
-        if (this.levelIndex > LevelDataManager.getInstance().mileStone) {
+        if (this.levelIndex >= LevelDataManager.getInstance().mileStone) {
             LevelDataManager.getInstance().mileStone = this.levelIndex + 1;
         }
     };
