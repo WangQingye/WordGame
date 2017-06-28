@@ -69,7 +69,7 @@ class MissonSence extends eui.Component
             if(icon.level <= mileStone)
             {
                 icon.enabled = true;
-                console.log(3);
+                console.log(2);
                 icon['img_levelbg'].source = "gs_select_1_png";
             }else
             {
